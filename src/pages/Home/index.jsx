@@ -11,6 +11,7 @@ import { Container, Search, Logo, Wrapper, CarroselTitle, Carrosel} from './styl
 
 export const Home = () => {
   const [inputValue, setInputValue] = useState('');
+  const [query, setQuery] = useState('')
   const [modalOpen, setModalOpen] = useState(false);
   const settings = {
     dots: false,
@@ -20,6 +21,14 @@ export const Home = () => {
     slidesToScroll: 4,
     adaptiveHeight: true
   };
+
+  function handleKeyPress(e){
+    if (e.key === 'Enter'){
+      setQuery(inputValue)
+    }
+  }
+
+
   return (
     <Wrapper>
       <Container>
@@ -30,7 +39,7 @@ export const Home = () => {
           outlined
           // onTrailingIconSelect={() => this.setState({value: ''})}
           trailingIcon={<MaterialIcon role="button" icon="search" />}>
-          <Input value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
+          <Input value={inputValue} onKeyPress={handleKeyPress} onChange={(e) => setInputValue(e.target.value)} />
         </TextField>
         <CarroselTitle>Na sua Área</CarroselTitle>
         <Carrosel {...settings}>
@@ -49,7 +58,7 @@ export const Home = () => {
       </Search>
       <RestauranteCard></RestauranteCard>
     </Container>
-    <Map />
+    <Map query={query} />
    {// <Modal open={modalOpen} onclose={() => setModalOpen(!modalOpen)}/>
    }
     </Wrapper>
