@@ -6,12 +6,12 @@ import MaterialIcon from '@material/react-material-icon';
 import logo from '../../assets/logo.svg';
 import restaurantes from '../../assets/restaurante-fake.png'
 
-import {ImageCard, RestauranteCard, Modal} from '../../components'
-import { Container, Search, Logo, Wrapper, Map, CarroselTitle, Carrosel} from './style';
+import {ImageCard, RestauranteCard, Modal, Map} from '../../components'
+import { Container, Search, Logo, Wrapper, CarroselTitle, Carrosel} from './style';
 
 export const Home = () => {
   const [inputValue, setInputValue] = useState('');
-  const [modalOpen, setModalOpen] = useState(true);
+  const [modalOpen, setModalOpen] = useState(false);
   const settings = {
     dots: false,
     infinite: true,
@@ -50,7 +50,8 @@ export const Home = () => {
       <RestauranteCard></RestauranteCard>
     </Container>
     <Map />
-    <Modal open={modalOpen} onclose={() => setModalOpen(!modalOpen)}/>
+   {// <Modal open={modalOpen} onclose={() => setModalOpen(!modalOpen)}/>
+   }
     </Wrapper>
   );
 };
